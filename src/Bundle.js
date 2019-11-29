@@ -1,4 +1,4 @@
-import {PureComponent} from 'react';
+import { PureComponent } from "react";
 export default class Bundle extends PureComponent {
   constructor(props) {
     super(props);
@@ -7,20 +7,20 @@ export default class Bundle extends PureComponent {
     };
   }
 
-  componentWillMount() {
-    this.load(this.props)
+  UNSAFE_componentWillMount() {
+    this.load(this.props);
   }
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.load !== this.props.load) {
-      this.load(nextProps)
+      this.load(nextProps);
     }
   }
   load(props) {
     this.setState({
       mod: null
     });
-    //注意这里，使用Promise对象; mod.default导出默认
-    props.load().then((mod) => {
+
+    props.load().then(mod => {
       this.setState({
         mod: mod.default ? mod.default : mod
       });
