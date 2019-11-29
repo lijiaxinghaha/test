@@ -17,6 +17,7 @@ export default class Report extends Component {
     };
   }
   render() {
+    const { page } = this.state;
     const theEndStyle = {
       alignItems: "flex-end",
       backgroundColor: "#000",
@@ -29,17 +30,21 @@ export default class Report extends Component {
     return (
       <div className="route_change">
         <FlipPage responsive={true} showSwipeHint lastComponent={theEnd}>
-          {this.state.page.map((item, key) => {
+          {page.map((item, key) => {
             return (
-              <div key={key}>
-                <Conventional page={item} />
+              <div>
+                <div key={key}>
+                  <Conventional page={item} />
+                </div>
+                {key === page.length - 1 && (
+                  <div className="arrow">
+                    <img className="up" src={arrow} alt={"#"} />
+                  </div>
+                )}
               </div>
             );
           })}
         </FlipPage>
-        <div className="arrow">
-          <img className="up" src={arrow} alt={"#"} />
-        </div>
       </div>
     );
   }
