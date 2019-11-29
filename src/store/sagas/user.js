@@ -1,6 +1,8 @@
 import { put, call, takeEvery } from "redux-saga/effects";
 import { login1, login2 } from "../../services/user";
 
+if (put) {
+}
 const sagas = {
   *visitorRegister({ payload, callback }) {
     const result = yield call(login1, payload);

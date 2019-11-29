@@ -13,11 +13,11 @@ export default class Cover extends Component {
 
   render() {
     return (
-      <div className="g-login">
+      <div className="route_change">
         <div className="desc">有你相伴很好</div>
         <div className="btn_buttom">
           <span>
-            <Link to={`/lanuch`}>点击开始</Link>
+            <Link to={`/launch`}>点击开始</Link>
           </span>
         </div>
       </div>
