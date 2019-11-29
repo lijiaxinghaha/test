@@ -32,8 +32,8 @@ export default class Report extends Component {
         <FlipPage responsive={true} showSwipeHint lastComponent={theEnd}>
           {page.map((item, key) => {
             return (
-              <div>
-                <div key={key}>
+              <div key={key}>
+                <div>
                   <Conventional page={item} />
                 </div>
                 {key === page.length - 1 && (
