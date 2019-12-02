@@ -7,14 +7,8 @@
   background: url("../../assets/cover/@{back}.png") no-repeat;
   background-size: contain;
 }
-/* 星球动画 */
 /* 统一处理 */
-.coll(@firstTop, @secondTop, @name) {
-  .keyframes(all, @name, {0% {transform: translateY(@firstTop) ;} 50% {transform: translateY(@secondTop) ;} 100% {transform: translateY(@firstTop) ;}});
-  animation: @name 2s linear infinite;
-  -webkit-animation: @name 2s linear infinite;
-}
-/* 各浏览器 */
+
 .keyframes (@prefix,@name,@content) when (@prefix=def) {
   @keyframes @name {
     @content();
@@ -30,16 +24,24 @@
   .keyframes(def, @name, @content);
 }
 
+/* 星球动画 */
+.coll(@firstTop, @secondTop, @name) {
+  .keyframes(all, @name, {0% {transform: translateY(@firstTop) ;} 50% {transform: translateY(@secondTop) ;} 100% {transform: translateY(@firstTop) ;}});
+  animation: @name 2s linear infinite;
+  -webkit-animation: @name 2s linear infinite;
+}
+/* 流星动画 */
+.coll_star(@position, @name) {
+  .keyframes(all, @name, {0% {transform: translate(0, 0) ;} 100% {transform: translate(@position, @position) ;}});
+  animation: @name 1.4s linear infinite;
+  -webkit-animation: @name 1.4s linear infinite;
+}
+
 /* 光动画 */
 .coll_light(@firstOp, @secondOp, @name) {
   .keyframes(all, @name, {0% {opacity: @firstOp;} 50% {opacity: @secondOp ;} 100% {opacity: @firstOp ;}});
   animation: @name 3s linear infinite;
   -webkit-animation: @name 3s linear infinite;
-}
-.keyframes_light (@name,@content) {
-  @keyframes @name {
-    @content();
-  }
 }
 /* 按钮 */
 @keyframes btn {
@@ -93,6 +95,23 @@
   .light2 {
     .position_size(3.75rem, 2.21rem, light2, bottom, 0, left, 0);
     .coll_light(0, 100, light2);
+  }
+  /* 流星 */
+  .star1 {
+    .position_size(23px, 23px, star1, left, 52px, top, 198px);
+    .coll_star(227px, star1);
+  }
+  .star2 {
+    .position_size(14px, 14px, star2, left, 60px, top, 314px);
+    .coll_star(227px, star2);
+  }
+  .star3 {
+    .position_size(18px, 18px, star3, left, 71px, top, 175px);
+    .coll_star(227px, star3);
+  }
+  .star4 {
+    .position_size(24px, 24px, star4, left, 170px, top, 170px);
+    .coll_star(227px, star4);
   }
 
   .btn_buttom {
