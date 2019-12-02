@@ -13,12 +13,26 @@ export default class Cover extends Component {
 
   render() {
     return (
-      <div className="route_change">
-        <div className="desc">有你相伴很好</div>
+      <div className="cover_content">
+        <span className="title"></span>
+        {/* 流星 */}
+        <span className="star1"></span>
+        <span className="star2"></span>
+        <span className="star3"></span>
+        <span className="star4"></span>
+        {/* 星球 */}
+        <span className="earth1"></span>
+        <span className="earth2"></span>
+        <span className="earth3"></span>
+        <span className="earth4"></span>
+        {/* 书 */}
+        <span className="book_left"></span>
+        <span className="light1"></span>
+        <span className="book_right"></span>
+        <span className="light2"></span>
+
         <div className="btn_buttom">
-          <span>
-            <Link to={`/launch`}>点击开始</Link>
-          </span>
+          <span className="btn"></span>
         </div>
       </div>
     );

@@ -8,6 +8,7 @@ export default class Report extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showUp: true,
       page: [
         { title: "知识总结页", num: "p1" },
         { title: "这是早起页", num: "p2" },
@@ -16,8 +17,13 @@ export default class Report extends Component {
       ]
     };
   }
+  handlePageChange = (pageIndex, direction) => {
+    this.setState({
+      showUp: pageIndex !== this.state.page.length - 1
+    });
+  };
   render() {
-    const { page } = this.state;
+    const { page, showUp } = this.state;
     const theEndStyle = {
       alignItems: "flex-end",
       backgroundColor: "#000",
@@ -29,22 +35,20 @@ export default class Report extends Component {
     const theEnd = <div style={theEndStyle}>The End!</div>;
     return (
       <div className="route_change">
-        <FlipPage responsive={true} showSwipeHint lastComponent={theEnd}>
+        <FlipPage responsive={true} showSwipeHint lastComponent={theEnd} onPageChange={this.handlePageChange}>
           {page.map((item, key) => {
             return (
               <div key={key}>
-                <div>
-                  <Conventional page={item} />
-                </div>
-                {key === page.length - 1 && (
-                  <div className="arrow">
-                    <img className="up" src={arrow} alt={"#"} />
-                  </div>
-                )}
+                <Conventional page={item} />
               </div>
             );
           })}
         </FlipPage>
+        {showUp && (
+          <div className="arrow">
+            <img className="up" src={arrow} alt={"#"} />
+          </div>
+        )}
       </div>
     );
   }
